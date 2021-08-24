@@ -1,0 +1,43 @@
+---
+ip: "192.168.10.22"
+memory: 2048
+cpus: 2
+name: test
+provider: virtualbox
+
+authorize: "C:/Users/DNS/.ssh/publicKey"
+
+keys:
+    - "C:/Users/DNS/.ssh/id_rsa"
+
+folders:
+    - map: "D:/test.test/laravel/project"
+      to: /home/vagrant/www
+
+sites:
+    - map: test.test
+      to: /home/vagrant/www/public
+      php: "7.4"
+      schedule: true
+
+databases:
+    - homestead
+    - homestead_test
+
+features:
+    - mysql: true
+    - mariadb: false
+    - postgresql: false
+    - ohmyzsh: false
+    - webdriver: false
+
+#services:
+#    - enabled:
+#        - "postgresql@12-main"
+#    - disabled:
+#        - "postgresql@11-main"
+    
+ports:
+     - send: 9003
+       to: 9003
+       protocol: udp
